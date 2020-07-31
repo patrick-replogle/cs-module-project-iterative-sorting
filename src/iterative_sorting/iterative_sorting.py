@@ -1,4 +1,5 @@
 import time
+
 arr = [43, 2, 1, 77, 53, 54, 44, 6]
 
 
@@ -11,11 +12,22 @@ def selection_sort(arr):
         # TO-DO: find next smallest element
         # (hint, can do in 3 loc)
         # Your code here
-
+        for j in range(cur_index, len(arr)):
+            if arr[j] < arr[smallest_index]:
+                smallest_index = j
         # TO-DO: swap
         # Your code here
+        if cur_index != smallest_index:
+            arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
 
     return arr
+
+
+print('\nSelection Sort')
+selection_start = time.time()
+print(selection_sort(arr))
+selection_end = time.time()
+print(f"Runtime: {selection_end - selection_start}")
 
 
 # TO-DO:  implement the Bubble Sort function below
@@ -32,7 +44,7 @@ def bubble_sort(arr):
     return arr
 
 
-print('Bubble Sort')
+print('\nBubble Sort')
 bubble_start = time.time()
 print(bubble_sort(arr))
 bubble_end = time.time()

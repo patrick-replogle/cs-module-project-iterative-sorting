@@ -6,37 +6,37 @@ for i in range(1000000):
 
 
 def linear_search(arr, target):
-    for num in arr:
-        if num == target:
-            return True
+    for i in range(len(arr)):
+        if arr[i] == target:
+            return i
     return -1
 
 
-print('Linear Search')
+print('\nLinear Search')
 linear_start = time.time()
-print(linear_search(arr, 9492))
+print('Output: ', linear_search(arr, 94921))
 linear_end = time.time()
-print(f"Runtime: {linear_end - linear_start}")
+print(f'Runtime: {linear_end - linear_start}\n')
 
 
 # Write an iterative implementation of Binary Search
 def binary_search(arr, target):
-    l = 0
-    r = len(arr) - 1
+    left = 0
+    right = len(arr) - 1
 
-    while l <= r:
-        mid = (r + l) // 2
-        if arr[mid] == target:
-            return True
-        elif arr[mid] > target:
-            r = mid - 1
-        elif arr[mid] < target:
-            l = mid + 1
+    while left <= right:
+        mid = (left + right) // 2
+        if target == arr[mid]:
+            return mid
+        elif target < arr[mid]:
+            right = mid - 1
+        elif target > arr[mid]:
+            left = mid + 1
     return -1
 
 
 print('Binary Search')
 binary_start = time.time()
-print(binary_search(arr, 5930))
+print('Output: ', binary_search(arr, 94921))
 binary_end = time.time()
-print(f"Runtime: {binary_end - binary_start}")
+print(f'Runtime: {binary_end - binary_start}\n')
