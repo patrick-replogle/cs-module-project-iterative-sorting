@@ -17,8 +17,7 @@ def selection_sort(arr):
                 smallest_index = j
         # TO-DO: swap
         # Your code here
-        if cur_index != smallest_index:
-            arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
+        arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
 
     return arr
 
@@ -33,11 +32,11 @@ print(f"Runtime: {selection_end - selection_start}")
 # TO-DO:  implement the Bubble Sort function below
 def bubble_sort(arr):
     swaps = True
-    for i in range(len(arr)-1):
+    for i in range(len(arr)):
         swaps = False
-        for j in range(1, len(arr)):
-            if arr[j] < arr[j-1]:
-                arr[j], arr[j-1] = arr[j-1], arr[j]
+        for j in range(len(arr)-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
                 swaps = True
         if swaps == False:
             break
@@ -71,6 +70,38 @@ What is the time and space complexity of the counting sort algorithm?
 
 
 def counting_sort(arr, maximum=None):
-    # Your code here
+    if len(arr) == 0:
+        return arr
 
-    return arr
+    if min(arr) < 0:
+        return "Error, negative numbers not allowed in Count Sort"
+
+    max_value = max(arr) + 1
+    counts = [0] * (max_value)
+    result = [0] * len(arr)
+
+    for value in arr:
+        counts[value] += 1
+
+    sum_val = 0
+    for i in range(len(counts)):
+        temp = counts[i]
+        counts[i] = sum_val
+        sum_val += temp
+
+    for value in arr:
+        result[counts[value]] = value
+        counts[value] += 1
+
+    return result
+
+    # result = [None] * len(arr)
+
+    # for item in arr:
+    #     result[counts[item]] = item
+    #     counts[item] += 1
+
+    # return result
+
+
+print(counting_sort([4, 2, 2, 8, 3, 3, 1]))
