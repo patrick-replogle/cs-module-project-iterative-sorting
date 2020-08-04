@@ -95,13 +95,5 @@ def counting_sort(arr, maximum=None):
 
     return result
 
-    # result = [None] * len(arr)
-
-    # for item in arr:
-    #     result[counts[item]] = item
-    #     counts[item] += 1
-
-    # return result
-
 
 print(counting_sort([4, 2, 2, 8, 3, 3, 1]))
